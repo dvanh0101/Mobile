@@ -24,7 +24,7 @@ class _MyHomePageState extends State<MyHomePage> {
   ];
   final autoSizeGroup = AutoSizeGroup();
   final List<Widget> _screens = [
-    home(),
+    Home(),
     web_stories(),
     notifications(),
     Profile(),
