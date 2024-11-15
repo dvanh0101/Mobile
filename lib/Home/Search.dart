@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:searchfield/searchfield.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
-import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
-
 
 class Search extends StatefulWidget {
   const Search({Key? key}) : super(key: key);
@@ -33,9 +31,7 @@ class _SearchState extends State<Search> {
                       borderRadius: BorderRadius.circular(15.0),
                     ),
                   ),
-                  onChanged: (query) {
-                    // Handle search logic
-                  },
+                  onChanged: (query) {},
                 ),
               ),
               IconButton(
@@ -75,157 +71,333 @@ class _SearchState extends State<Search> {
           Row(
             children: [
               Icon(Icons.filter_alt_rounded),
-              Flexible(child: Text('Lọc')),
+              Text('Lọc'),
               Container(
                 margin: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
                 width: 1,
                 height: 35,
                 color: Colors.grey,
               ),
-              Container(
-                width: 100.0,
-                height: 50.0,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15.0),
-                ),
-                child: InputDecorator(
-                  decoration: InputDecoration(
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.orange ),
-                      borderRadius: BorderRadius.circular(15.0),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(15.0),
+              Expanded(
+                child: Container(
+                  width: 600.0,
+                  child:
+                   SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Container(
+                          width: 100.0,
+                          height: 50.0,
+                          // margin: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                          child: InputDecorator(
+                            decoration: InputDecoration(
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.orange ),
+                                borderRadius: BorderRadius.circular(15.0),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.black),
+                                borderRadius: BorderRadius.circular(15.0),
+                              ),
+                            ),
+                            child: DropdownButton<String>(
+                              value: selectedOption,
+                              isExpanded: true,
+                              onChanged: (String? newValue) {
+                                setState(() {
+                                  selectedOption = newValue;
+                                });
+                              },
+                              items: suggestions.map<DropdownMenuItem<String>>((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(value),
+                                );
+                              }).toList(),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          width: 100.0,
+                          height: 50.0,
+                          margin: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                          child: InputDecorator(
+                            decoration: InputDecoration(
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.orange ),
+                                borderRadius: BorderRadius.circular(15.0),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.black),
+                                borderRadius: BorderRadius.circular(15.0),
+                              ),
+                            ),
+                            child: DropdownButton<String>(
+                              value: selectedOption,
+                              isExpanded: true,
+                              onChanged: (String? newValue) {
+                                setState(() {
+                                  selectedOption = newValue;
+                                });
+                              },
+                              items: suggestions.map<DropdownMenuItem<String>>((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(value),
+                                );
+                              }).toList(),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          width: 100.0,
+                          height: 50.0,
+                          // margin: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                          child: InputDecorator(
+                            decoration: InputDecoration(
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.orange ),
+                                borderRadius: BorderRadius.circular(15.0),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.black),
+                                borderRadius: BorderRadius.circular(15.0),
+                              ),
+                            ),
+                            child: DropdownButton<String>(
+                              value: selectedOption,
+                              isExpanded: true,
+                              onChanged: (String? newValue) {
+                                setState(() {
+                                  selectedOption = newValue;
+                                });
+                              },
+                              items: suggestions.map<DropdownMenuItem<String>>((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(value),
+                                );
+                              }).toList(),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          width: 100.0,
+                          height: 50.0,
+                          margin: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                          child: InputDecorator(
+                            decoration: InputDecoration(
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.orange ),
+                                borderRadius: BorderRadius.circular(15.0),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.black),
+                                borderRadius: BorderRadius.circular(15.0),
+                              ),
+                            ),
+                            child: DropdownButton<String>(
+                              value: selectedOption,
+                              isExpanded: true,
+                              onChanged: (String? newValue) {
+                                setState(() {
+                                  selectedOption = newValue;
+                                });
+                              },
+                              items: suggestions.map<DropdownMenuItem<String>>((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(value),
+                                );
+                              }).toList(),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                  child: DropdownButton<String>(
-                    value: selectedOption,
-                    isExpanded: true,
-                    onChanged: (String? newValue) {
-                      setState(() {
-                        selectedOption = newValue;
-                      });
-                    },
-                    items: suggestions.map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
-                  ),
                 ),
-              ),
-              Container(
-                width: 100.0,
-                height: 50.0,
-                margin: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15.0),
-                ),
-                child: InputDecorator(
-                  decoration: InputDecoration(
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.orange),
-                      borderRadius: BorderRadius.circular(15.0),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(15.0),
-                    ),
-                  ),
-                  child: DropdownButton<String>(
-                    value: selectedOption,
-                    isExpanded: true,
-                    onChanged: (String? newValue) {
-                      setState(() {
-                        selectedOption = newValue;
-                      });
-                    },
-                    items: suggestions.map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
-                  ),
-                ),
-              ),
-              Container(
-                width: 100.0,
-                height: 50.0,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15.0),
-                ),
-                child: InputDecorator(
-                  decoration: InputDecoration(
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.orange),
-                      borderRadius: BorderRadius.circular(15.0),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black),
-                      borderRadius: BorderRadius.circular(15.0),
-                    ),
-                  ),
-                  child: DropdownButton<String>(
-                    value: selectedOption,
-                    isExpanded: true,
-                    onChanged: (String? newValue) {
-                      setState(() {
-                        selectedOption = newValue;
-                      });
-                    },
-                    items: suggestions.map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
-                  ),
-                ),
-              ),
+              )
             ],
-          ),
-          Container(
-            width: 100.0,
-            height: 50.0,
-            // margin: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15.0),
-            ),
-            child: InputDecorator(
-              decoration: InputDecoration(
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.orange ),
-                  borderRadius: BorderRadius.circular(15.0),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.black),
-                  borderRadius: BorderRadius.circular(15.0),
-                ),
-              ),
-              child: DropdownButton<String>(
-                value: selectedOption,
-                isExpanded: true,
-                onChanged: (String? newValue) {
-                  setState(() {
-                    selectedOption = newValue;
-                  });
-                },
-                items: suggestions.map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
-              ),
-            ),
           ),
           Row(
             children: [
+              Text('Thuê phòng trọ >> '),
+              Flexible(child: Text('Khu Vực :')),
 
-          ],
+            ],
+          ),
+          Row(
+            children: [
+              Expanded(
+                child: Container(
+                  width: 600.0,
+                  child:
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Container(
+                          width: 100.0,
+                          height: 50.0,
+                          // margin: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                          child: InputDecorator(
+                            decoration: InputDecoration(
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.orange ),
+                                borderRadius: BorderRadius.circular(15.0),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.black),
+                                borderRadius: BorderRadius.circular(15.0),
+                              ),
+                            ),
+                            child: DropdownButton<String>(
+                              value: selectedOption,
+                              isExpanded: true,
+                              onChanged: (String? newValue) {
+                                setState(() {
+                                  selectedOption = newValue;
+                                });
+                              },
+                              items: suggestions.map<DropdownMenuItem<String>>((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(value),
+                                );
+                              }).toList(),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          width: 100.0,
+                          height: 50.0,
+                          margin: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                          child: InputDecorator(
+                            decoration: InputDecoration(
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.orange ),
+                                borderRadius: BorderRadius.circular(15.0),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.black),
+                                borderRadius: BorderRadius.circular(15.0),
+                              ),
+                            ),
+                            child: DropdownButton<String>(
+                              value: selectedOption,
+                              isExpanded: true,
+                              onChanged: (String? newValue) {
+                                setState(() {
+                                  selectedOption = newValue;
+                                });
+                              },
+                              items: suggestions.map<DropdownMenuItem<String>>((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(value),
+                                );
+                              }).toList(),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          width: 100.0,
+                          height: 50.0,
+                          // margin: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                          child: InputDecorator(
+                            decoration: InputDecoration(
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.orange ),
+                                borderRadius: BorderRadius.circular(15.0),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.black),
+                                borderRadius: BorderRadius.circular(15.0),
+                              ),
+                            ),
+                            child: DropdownButton<String>(
+                              value: selectedOption,
+                              isExpanded: true,
+                              onChanged: (String? newValue) {
+                                setState(() {
+                                  selectedOption = newValue;
+                                });
+                              },
+                              items: suggestions.map<DropdownMenuItem<String>>((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(value),
+                                );
+                              }).toList(),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          width: 100.0,
+                          height: 50.0,
+                          margin: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                          child: InputDecorator(
+                            decoration: InputDecoration(
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.orange ),
+                                borderRadius: BorderRadius.circular(15.0),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.black),
+                                borderRadius: BorderRadius.circular(15.0),
+                              ),
+                            ),
+                            child: DropdownButton<String>(
+                              value: selectedOption,
+                              isExpanded: true,
+                              onChanged: (String? newValue) {
+                                setState(() {
+                                  selectedOption = newValue;
+                                });
+                              },
+                              items: suggestions.map<DropdownMenuItem<String>>((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(value),
+                                );
+                              }).toList(),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              )
+            ],
           ),
         ],
       ),
