@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:student_lite/screens/test.dart';
 import 'package:student_lite/utils/config-color.dart';
 import 'package:student_lite/widgets/input_box.dart';
+import 'package:student_lite/screens/login-page.dart';
+import 'package:student_lite/screens/signin_page.dart';
 
 class welcomeApp extends StatefulWidget {
   const welcomeApp({super.key});
@@ -39,7 +41,7 @@ class _welcomeAppState extends State<welcomeApp> {
             ),
             labelPadding: const EdgeInsets.all(0),
             labelColor: Colors.black,
-            labelStyle: StyleConfig.textTitle,
+            // labelStyle: StyleConfig.textTitle,
             unselectedLabelStyle: const TextStyle(
               fontFamily: 'Roboto',
               fontSize: 13,
@@ -56,8 +58,8 @@ class _welcomeAppState extends State<welcomeApp> {
         ),
         body: const TabBarView(
           children: <Widget>[
-            avs(),
-            avs(),
+            LoginScreen(),
+            SigninPage(),
           ],
         ),
       ),

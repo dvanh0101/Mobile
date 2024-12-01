@@ -34,7 +34,7 @@ class _HomeListState extends State<HomeList> {
         leading: IconButton(
           padding: const EdgeInsets.all(2.67),
           icon:
-              Image.asset('assets/icons/Icon.png', width: 21.82, height: 21.82),
+          Image.asset('assets/icons/Icon.png', width: 21.82, height: 21.82),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -282,7 +282,7 @@ class _HomeListState extends State<HomeList> {
                             padding: const EdgeInsets.all(3),
                             decoration: BoxDecoration(
                               border:
-                                  Border.all(color: Colors.black, width: 0.5),
+                              Border.all(color: Colors.black, width: 0.5),
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: Row(
@@ -312,7 +312,7 @@ class _HomeListState extends State<HomeList> {
                             padding: const EdgeInsets.all(3),
                             decoration: BoxDecoration(
                               border:
-                                  Border.all(color: Colors.black, width: 0.5),
+                              Border.all(color: Colors.black, width: 0.5),
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: Row(

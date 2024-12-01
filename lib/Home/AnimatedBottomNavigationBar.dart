@@ -5,6 +5,7 @@ import 'package:student_lite/Home/Notifications.dart';
 import 'package:student_lite/Home/Profile.dart';
 import 'package:student_lite/Home/Web_Stories.dart';
 import 'package:student_lite/Home/Home.dart';
+import 'package:student_lite/Home/SP_67.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key? key, required this.title}) : super(key: key);
@@ -14,7 +15,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  var _bottomNavIndex = 0; // Default index of the first screen
+  var _bottomNavIndex = 0;
 
   final iconList = <IconData>[
     Icons.home,
@@ -24,7 +25,7 @@ class _MyHomePageState extends State<MyHomePage> {
   ];
   final autoSizeGroup = AutoSizeGroup();
   final List<Widget> _screens = [
-    Home(),
+    sp_67(),
     web_stories(),
     notifications(),
     Profile(),
@@ -34,12 +35,12 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
-      appBar: AppBar(
-        title: Text(
-          widget.title,
-          style: TextStyle(color: Colors.white),
-        ),
-      ),
+      // appBar: AppBar(
+      //   title: Text(
+      //     widget.title,
+      //     style: TextStyle(color: Colors.white),
+      //   ),
+      // ),
       body: _screens[_bottomNavIndex],
       floatingActionButton: Container(
         width: 70,

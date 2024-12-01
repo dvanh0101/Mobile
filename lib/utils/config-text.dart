@@ -45,6 +45,11 @@ class StyleConfigText {
     fontFamily: 'Manrope-Black',
   );
 
+  static TextStyle bodyTextBlack4 = _baseTextStyle.copyWith(
+    fontSize: 14,
+    fontFamily: 'Manrope-Black',
+  );
+
   static TextStyle bodyTextSemiBold1 = _baseTextStyle.copyWith(
     fontSize: 20,
     fontFamily: 'Manrope-SemiBold',
@@ -60,6 +65,11 @@ class StyleConfigText {
     fontFamily: 'Manrope-SemiBold',
   );
 
+  static TextStyle bodyTextSemiBold4 = _baseTextStyle.copyWith(
+    fontSize: 14,
+    fontFamily: 'Manrope-SemiBold',
+  );
+
   static TextStyle bodyTextRegular1 = _baseTextStyle.copyWith(
     fontSize: 20,
     fontFamily: 'Manrope-Regular',
@@ -72,6 +82,11 @@ class StyleConfigText {
 
   static TextStyle bodyTextRegular3 = _baseTextStyle.copyWith(
     fontSize: 16,
+    fontFamily: 'Manrope-Regular',
+  );
+
+  static TextStyle bodyTextRegular4 = _baseTextStyle.copyWith(
+    fontSize: 14,
     fontFamily: 'Manrope-Regular',
   );
 

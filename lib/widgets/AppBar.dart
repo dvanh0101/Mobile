@@ -1,23 +1,25 @@
 import 'package:flutter/material.dart';
-
-class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+import 'package:student_lite/Home/Home.dart';
+import 'package:student_lite/Home/Tab_Home.dart';
+class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
   @override
   final Size preferredSize;
+  final Function(String) onSearchSubmitted;
 
-  CustomAppBar({Key? key}): preferredSize = const Size.fromHeight(kToolbarHeight * 2),
+  CustomAppBar({Key? key, required this.onSearchSubmitted})
+      : preferredSize = const Size.fromHeight(kToolbarHeight * 2),
         super(key: key);
 
+  @override
+  _CustomAppBarState createState() => _CustomAppBarState();
+}
+
+class _CustomAppBarState extends State<CustomAppBar> {
   final TextEditingController _controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leading: IconButton(
-        icon: const Icon(Icons.arrow_circle_left_outlined),
-        onPressed: () {
-          Navigator.of(context).pop();
-        },
-      ),
       title: const Text(
         'Student Lite',
         style: TextStyle(
@@ -28,42 +30,34 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: true,
       flexibleSpace: Column(
         children: [
-          SizedBox(
-            height:90.0,
-          ),
+          SizedBox(height: 90.0),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
-            child: Container(
-              height: 50.0,
-              child: Row(
-                children: [
-                  Expanded(
-                    child: TextField(
-                      controller: _controller,
-                      decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.search),
-                        hintText: 'Search...',
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15.0),
-                        ),
-                        contentPadding: EdgeInsets.symmetric(vertical: 10.0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    controller: _controller,
+                    decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.search),
+                      hintText: 'Search...',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15.0),
                       ),
-                      onChanged: (query) {
-                      },
                     ),
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.chat),
-                    onPressed: () {
+                    onSubmitted: (query) {
+                      if (query.isNotEmpty) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Home(searchQuery: query),
+                          ),
+                        );
+                      }
                     },
                   ),
-                  IconButton(
-                    icon: const Icon(Icons.grid_view),
-                    onPressed: () {
-                    },
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ],

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:student_lite/Home/AnimatedBottomNavigationBar.dart';
 import 'package:student_lite/utils/config-color.dart';
 import 'package:student_lite/utils/config-text.dart';
-
+import 'package:student_lite/Home/Home.dart';
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -186,6 +187,14 @@ class _LoginScreenState extends State<LoginScreen> {
             // login();
             isLoginFailed = true;
             _validateForm();
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => MyHomePage(
+                      title: 'title')
+              ),
+            );
+
           }
           _validateForm();
         },

@@ -21,7 +21,7 @@ class _AccountSettingState extends State<AccountSetting> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(),
+      appBar: CustomAppBar(onSearchSubmitted: (String ) {  },),
       body: Column(
         children: [
           Container(

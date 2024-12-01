@@ -15,11 +15,11 @@ class CustomAlreadyAccount extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         TextButton(
-          onPressed: () {}, // Gọi callback khi nhấn vào
+          onPressed: () {},
           child: const Text(
             "Already have an account?",
             style: TextStyle(
-              color: Colors.blue, // Có thể tuỳ chỉnh theo style của bạn
+              color: Colors.blue,
               decoration: TextDecoration.underline,
             ),
           ),

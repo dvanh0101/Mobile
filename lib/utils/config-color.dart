@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+
 class StyleConfigColor {
 
 
   static Color background = const Color(0xFFF5F5F5);
+  static Color backgroundwhite = const Color(0xFFFFFFFF);
+
   static Color placeholder_text = const Color(0xFFF5F5F5);
 
   static Color primary = const Color(0xFF7939fb);
@@ -41,7 +44,7 @@ class StyleConfigColor {
   static Color text2Dark7 = const Color(0xFF414146);
   static Color text2Dark8 = const Color(0xFF27272A);
 
-  static Color succeed = const Color(0xFF00C810);
+
 
   static Color notice = const Color(0xFFFFC000);
   static Color noticeLight1 = const Color(0xFFFFD400);
@@ -51,34 +54,34 @@ class StyleConfigColor {
 
 
   static Color warning = const Color(0xFFFF424f);
+
+  static Color warningDark1 = const Color(0xFFF11F1F);
   static Color warningDark = const Color(0xFFFF0F0F);
   static Color warningLight1 = const Color(0xFFFF8383);
   static Color warningLight2 = const Color(0xFFFFC2C2);
   static Color warningLight3 = const Color(0xFFFFF1F1);
 
   static Color gray = const Color(0xFF808080);
+  static Color grayShade50 = const Color(0xFFFAFAFA);
+  static Color grayShade100 = const Color(0xFFF5F5F5);
+  static Color grayShade200 = const Color(0xFFEEEEEE);
+  static Color grayShade300 = const Color(0xFFE0E0E0);
 
-}
-class StyleConfig {
-  static Color black = const Color(0xff000000);
-  static Color white = const Color(0xffFFFFFF);
-  static Color bgColor = const Color(0xFFF6F6F6);
-  static Color text = const Color(0xff081d3f);
-  static Color textBlack = const Color.fromARGB(255, 85, 84, 84);
-  static Color textGrey = const Color(0x00206f82);
-  static Color grey = const Color.fromARGB(255, 199, 199, 199);
-  static Color colormain = const Color(0xFF196E82);
-  static Color purple = const Color(0xFF6E0EAA);
 
-  static TextStyle textTitle = TextStyle(
-    color: purple,
-    fontSize: 20,
-    fontFamily: 'Poppins',
-  );
-  static TextStyle maintext = TextStyle(
-    color: black,
-    fontSize: 14,
-    fontFamily: 'Roboto-Thin',
-  );
-  
+  static Color orangeDark = const Color(0xFFFF8800);
+  static Color orangeDark1 = const Color(0xFFF86513);
+
+  static Color succeed = const Color(0xFF00C810);
+  static Color green = const Color(0xFF0AB930);
+
+  static Color blue = const Color(0xFF0866FF);
+
+
+  static Color keppelLight1 = const Color(0xFF9FEDBF);
+  static Color keppel = const Color(0xFF50A99A);
+
+  static Color beigeLight1 = const Color(0xFFE7DFD9);
+
+  static Color yellow = const Color(0xFFF8EE13);
+
 }

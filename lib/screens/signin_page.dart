@@ -5,6 +5,8 @@ import 'package:student_lite/widgets/customTextField.dart';
 import 'package:student_lite/widgets/customsigninbutton.dart';
 import 'package:student_lite/widgets/customsocialsigninoptions.dart';
 import 'package:student_lite/widgets/customalreadyaccount.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class SigninPage extends StatefulWidget {
   const SigninPage({super.key});
@@ -39,6 +41,38 @@ class _SigninPage extends State<SigninPage> {
 
   final formKey = GlobalKey<FormState>();
 
+  //Ham goi API Node.js de dang ky tai khoan
+  Future<void> _register() async {
+    final response = await http.post(
+      Uri.parse('http://192.168.1.176:3000/api/register'),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: jsonEncode({
+        'username': usernameController.text,
+        'password': passwordController.text,
+        'email': emailController.text,
+        'phone': phoneController.text,
+      }),
+    );
+
+    if (response.statusCode == 201) {
+      //Dang ky thanh cong
+      print('Success: ${response.body}');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Registration successful')),
+      );
+    } else {
+      //Dang ky that bai
+      print('Failed: ${response.body}');
+      final responseBody = json.decode(response.body);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Failed: ${responseBody['error']}')),
+      );
+    }
+  }
+
+  //Ham validate va xu ly khi nhan nut dang ky
   void _validateForm() {
     setState(() {
       usernameHasError = usernameController.text.isEmpty;
@@ -52,6 +86,14 @@ class _SigninPage extends State<SigninPage> {
       confirmPasswordError = confirmPasswordHasError ? "ConfirmPassword is required" : null;
       emailError = emailHasError ? "Email is required" : null;
       phoneError = phoneHasError ? "Phone is required" : null;
+    
+      if (usernameError == null &&
+          passwordError == null &&
+          confirmPasswordError == null &&
+          emailError == null &&
+          phoneError == null) {
+            _register();
+          }
     });
   }
 
