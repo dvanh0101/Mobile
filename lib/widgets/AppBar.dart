@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:student_lite/Home/Home.dart';
 import 'package:student_lite/Home/Tab_Home.dart';
+import 'package:student_lite/Home/ui_user_65.dart';
 class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
   @override
   final Size preferredSize;
@@ -56,6 +57,20 @@ class _CustomAppBarState extends State<CustomAppBar> {
                       }
                     },
                   ),
+                ),
+                IconButton(
+                  icon: Icon(Icons.chat),
+                  onPressed: () {
+                    Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => UiUser65(),
+                    ),
+                  );},
+                ),
+                IconButton(
+                  icon: Icon(Icons.grid_view),
+                  onPressed: () {},
                 ),
               ],
             ),

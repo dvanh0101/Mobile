@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'bubble-menu.dart';
+import '../widgets/bubble-menu.dart';
 
 class MainScreenWrapper extends StatelessWidget {
   final Widget child;

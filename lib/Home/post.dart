@@ -1,40 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:student_lite/Home/post-new-room-88.dart';
 import 'package:student_lite/widgets/AppBar.dart';
 import 'package:student_lite/widgets/AnimatedBottomNavigationBar.dart';
 import 'package:student_lite/widgets/fab.dart';
 import 'package:student_lite/Model/Phong.dart';
 import 'package:student_lite/Network/network_requets.dart';
+import 'package:student_lite/utils/config-color.dart';
+import 'package:student_lite/utils/config-text.dart';
 
-class SavePost extends StatefulWidget {
-  final List<Phong> favoriteList;
+class post extends StatefulWidget {
 
-  const SavePost({super.key, required this.favoriteList});
+
+  const post({super.key});
 
   @override
-  _SavePostState createState() => _SavePostState();
+  _postState createState() => _postState();
 }
 
-class _SavePostState extends State<SavePost> {
-  static const double _itemHeight = 100;
-  List<Phong> favoriteList = [];
+class _postState extends State<post> {
+  List<Phong> posts = []; // Add a list to hold the posts
 
   @override
   void initState() {
     super.initState();
-    _loadSavedItems();
+    _loadData(); // Load the data when the widget initializes
   }
-  Future<void> _loadSavedItems() async {
-    try {
-      final data = await NetworkRequets.fetchPhong();
-      setState(() {
-        favoriteList = data.where((phong) {
-          return NetworkRequets.isFavorite(phong.iId?.oid ?? "");
-        }).toList();
-      });
-    } catch (e) {
-      print("Failed to load saved items: $e");
-    }
+
+  Future<void> _loadData() async {
+    // Simulate loading data (you can replace this with a network request)
+    await Future.delayed(Duration(seconds: 2));
+    setState(() {
+      // Simulating an empty list, you can replace this with actual network data
+      posts = []; // Update this to your actual data fetching logic
+    });
   }
 
   @override
@@ -47,7 +46,7 @@ class _SavePostState extends State<SavePost> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              'Tin đăng đã lưu (${favoriteList.length}/100)',
+              'Bài đăng của chủ trọ',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
           ),
@@ -56,32 +55,27 @@ class _SavePostState extends State<SavePost> {
             color: Colors.grey,
             height: 1,
           ),
-          Expanded(
-            child: favoriteList.isEmpty
-                ? _buildNoDataView()
-                : ListView.builder(
-                  itemCount: favoriteList.length,
-                  itemBuilder: (context, index) {
-                    return GestureDetector(
-                      onTap: () {
-                        print("Item tapped: ${favoriteList[index].name}");
-                      },
-                      child: _buildFavoriteItem(favoriteList[index]),
-                    );
-                  },
-            ),
-          ),
           Divider(
             thickness: 1,
             color: Colors.grey,
             height: 10.0,
           ),
+          // Show data if available, otherwise show a no data message
+          Expanded(
+            child: posts.isEmpty
+                ? _buildNoDataView()
+                : ListView.builder(
+              itemCount: posts.length,
+              itemBuilder: (context, index) {
+                return _buildFavoriteItem(posts[index]);
+              },
+            ),
+          ),
         ],
       ),
       floatingActionButton: Padding(
-        padding: const EdgeInsets.fromLTRB(0,0,155,0),
-        child:
-        fab(),
+        padding: const EdgeInsets.fromLTRB(0, 0, 155, 0),
+        child: fab(),
       ),
       bottomSheet: Stack(
         children: [
@@ -90,6 +84,7 @@ class _SavePostState extends State<SavePost> {
       ),
     );
   }
+
   Widget _buildFavoriteItem(Phong phong) {
     bool isFavorite = NetworkRequets.isFavorite(phong.iId?.oid ?? "");
 
@@ -100,7 +95,6 @@ class _SavePostState extends State<SavePost> {
         padding: const EdgeInsets.all(10),
         child: Row(
           children: [
-            // Hình ảnh
             Column(
               children: [
                 if (phong.attachments != null && phong.attachments!.isNotEmpty)
@@ -120,7 +114,6 @@ class _SavePostState extends State<SavePost> {
                   ),
               ],
             ),
-            // Nội dung: tên, diện tích, giá, địa chỉ
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -172,30 +165,6 @@ class _SavePostState extends State<SavePost> {
                 ],
               ),
             ),
-            // Biểu tượng yêu thích
-            Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
-                  child: IconButton(
-                    icon: Icon(
-                      isFavorite ? Icons.favorite : Icons.favorite_border,
-                      color: isFavorite ? Colors.red : Colors.black,
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        if (isFavorite) {
-                          favoriteList.remove(phong);
-                        } else {
-                          favoriteList.add(phong);
-                        }
-                      });
-                      NetworkRequets.saveFavoriteStatus(phong.iId?.oid ?? "", !isFavorite);
-                    },
-                  ),
-                ),
-              ],
-            ),
           ],
         ),
       ),
@@ -203,8 +172,35 @@ class _SavePostState extends State<SavePost> {
   }
 
   Widget _buildNoDataView() {
-    return Center(
-      child: Text('Không có dữ liệu yêu thích.', style: TextStyle(fontSize: 16, color: Colors.grey)),
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(60.0,0,0,0),
+      child: Column(
+        children: [
+          Text('Hiện tại trang của bạn chưa có bài đăng.',
+            style: TextStyle(fontSize: 16, color: Colors.black),
+          ),
+          SizedBox(height: 20),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => RoomForm()),
+              );
+            },
+            style: ElevatedButton.styleFrom(
+              fixedSize: const Size(110, 50),
+              shape: RoundedRectangleBorder(
+                borderRadius:
+                BorderRadius.circular(8),
+              ),
+              backgroundColor: StyleConfigColor.keppel,
+              foregroundColor: StyleConfigColor.secondaryLight5,
+            ),
+            child: const Text('Đăng tin'),
+          ),
+        ],
+      ),
     );
   }
 }
+

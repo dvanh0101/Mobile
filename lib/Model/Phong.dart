@@ -12,6 +12,7 @@ class Phong {
   List<String>? reviewID;
   CreateAt? createAt;
   CreateAt? updateAt;
+  List<String>? imageUrls;
 
   Phong({
     this.iId,
@@ -27,6 +28,7 @@ class Phong {
     this.reviewID,
     this.createAt,
     this.updateAt,
+    this.imageUrls,
   });
 
   factory Phong.fromJson(Map<String, dynamic> json) {
@@ -44,6 +46,7 @@ class Phong {
       reviewID: json['ReviewID'] != null ? List<String>.from(json['ReviewID']) : [],
       createAt: json['CreateAt'] != null ? CreateAt.fromJson(json['CreateAt']) : null,
       updateAt: json['UpdateAt'] != null ? CreateAt.fromJson(json['UpdateAt']) : null,
+      imageUrls: json['ImageUrls'] != null ? List<String>.from(json['ImageUrls']) : [],
     );
   }
 
@@ -68,6 +71,7 @@ class Phong {
     if (this.updateAt != null) {
       data['UpdateAt'] = this.updateAt!.toJson();
     }
+    data['ImageUrls'] = this.imageUrls;
     return data;
   }
 }

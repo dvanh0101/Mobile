@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:student_lite/widgets/AnimatedBottomNavigationBar.dart';
 import 'package:student_lite/widgets/AppBar.dart';
+import 'package:student_lite/User/personal-information-37.dart';
+import 'package:student_lite/User/social-media-link-39.dart';
+import 'package:student_lite/User/41.dart';
+import 'package:student_lite/User/43.dart';
+import 'package:student_lite/widgets/fab.dart';
+
+
 class AccountSetting extends StatefulWidget {
   const AccountSetting({super.key});
 
@@ -50,7 +58,13 @@ class _AccountSettingState extends State<AccountSetting> {
               Container(
                 padding: const EdgeInsets.fromLTRB(40, 0, 0, 0),
                 child: GestureDetector(
-                  onTap: () => _changeTextColor(0),
+                  onTap: () {
+                    _changeTextColor(0);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => PersonalInformation()),
+                    );
+                  },
                   child: Text(
                     "Personal Information",
                     style: TextStyle(
@@ -67,7 +81,13 @@ class _AccountSettingState extends State<AccountSetting> {
               Container(
                 padding: const EdgeInsets.fromLTRB(40, 0, 0, 0),
                 child: GestureDetector(
-                  onTap: () => _changeTextColor(1),
+                  onTap: () {
+                    _changeTextColor(1);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SocialMediaLink()),
+                    );
+                  },
                   child: Text(
                     "Social Media Links",
                     style: TextStyle(
@@ -84,7 +104,13 @@ class _AccountSettingState extends State<AccountSetting> {
               Container(
                 padding: const EdgeInsets.fromLTRB(30, 0, 0, 0),
                 child: GestureDetector(
-                  onTap: () => _changeTextColor(2),
+                  onTap: () {
+                    _changeTextColor(2);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ChangePasswordPage()),
+                    );
+                  },
                   child: Text(
                     "Account Settings",
                     style: TextStyle(
@@ -101,7 +127,13 @@ class _AccountSettingState extends State<AccountSetting> {
               Container(
                 padding: const EdgeInsets.fromLTRB(40, 0, 0, 0),
                 child: GestureDetector(
-                  onTap: () => _changeTextColor(3),
+                  onTap: () {
+                    _changeTextColor(3);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => LoginHistoryPage()),
+                    );
+                  },
                   child: Text(
                     "Manage your login history",
                     style: TextStyle(
@@ -118,6 +150,16 @@ class _AccountSettingState extends State<AccountSetting> {
             height: 10.0,
             color: Colors.grey,
           ),
+        ],
+      ),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.fromLTRB(0,0,155,0),
+        child:
+        fab(),
+      ),
+      bottomSheet: Stack(
+        children: [
+          MyHomePage(searchQuery: 'searchQuery',),
         ],
       ),
     );

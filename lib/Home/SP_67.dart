@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:searchfield/searchfield.dart';
-import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:student_lite/Home/44_31.dart';
+import 'package:student_lite/Home/chutro.dart';
+import 'package:student_lite/Home/post.dart';
 import 'package:student_lite/widgets/AppBar.dart';
-import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
+import 'package:student_lite/widgets/AnimatedBottomNavigationBar.dart';
+import 'package:student_lite/widgets/fab.dart';
 import 'dart:async';
 class sp_67 extends StatefulWidget {
   const sp_67({Key? key}) : super(key: key);
@@ -14,12 +16,18 @@ class sp_67 extends StatefulWidget {
 class _sp_67State extends State<sp_67> {
   final PageController _controller = PageController();
   int _currentPage = 0;
+
   final List<String> _images = [
     'assets/avt.jpg',
     'assets/avt.jpg',
     'assets/avt.jpg',
   ];
-
+  int _selectedIndex = 0;
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
   @override
   void initState() {
     super.initState();
@@ -97,25 +105,34 @@ class _sp_67State extends State<sp_67> {
                   ),
                 ),
               ),
-              Container(
-                padding: const EdgeInsets.fromLTRB(20, 50, 20, 0),
-                height: 130,
-                width: 350,
-                decoration: BoxDecoration(
-                  color: Colors.grey,
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
-                child: ClipRRect(
-                  child: Text(
-                    'TRỞ THÀNH ĐỐI TÁC CỦA CHÚNG TÔI',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 17,
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => chutro()),
+                  );
+                },
+                child: Container(
+                  padding: const EdgeInsets.fromLTRB(20, 50, 20, 0),
+                  height: 130,
+                  width: 350,
+                  decoration: BoxDecoration(
+                    color: Colors.grey,
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                  child: ClipRRect(
+                    child: Text(
+                      'TRỞ THÀNH ĐỐI TÁC CỦA CHÚNG TÔI',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 17,
+                      ),
+                      textAlign: TextAlign.center,
                     ),
-                    textAlign: TextAlign.center,
                   ),
                 ),
               ),
+
               Row(
                 children: [
                   Expanded(
@@ -195,18 +212,28 @@ class _sp_67State extends State<sp_67> {
                       children: [
                         Container(
                           padding: const EdgeInsets.fromLTRB(0, 40, 0, 0),
-                          child: Container(
-                            padding: const EdgeInsets.fromLTRB(5, 5, 5, 5),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(20.0),
-                              border: Border.all(
-                                color: Colors.orangeAccent,
-                                width: 3.0,
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => HomeList(),
+                                ),
+                              );
+                            },
+                            child: Container(
+                              padding: const EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(20.0),
+                                border: Border.all(
+                                  color: Colors.orangeAccent,
+                                  width: 3.0,
+                                ),
                               ),
-                            ),
-                            child: ClipRRect(
-                                child: Image.asset('assets/images/PTro.png')
+                              child: ClipRRect(
+                                child: Image.asset('assets/images/PTro.png'),
+                              ),
                             ),
                           ),
                         ),
@@ -226,6 +253,7 @@ class _sp_67State extends State<sp_67> {
                       ],
                     ),
                   ),
+
                   Expanded(
                     child: Column(
                       children: [
@@ -266,6 +294,16 @@ class _sp_67State extends State<sp_67> {
               ),
             ],
           ),
+        ),
+        floatingActionButton: Padding(
+          padding: const EdgeInsets.fromLTRB(0,0,155,0),
+          child:
+          fab(),
+        ),
+        bottomSheet: Stack(
+          children: [
+            MyHomePage(searchQuery: 'searchQuery',),
+          ],
         ),
       );
     }
