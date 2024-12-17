@@ -5,7 +5,6 @@ import 'package:student_lite/utils/config-color.dart';
 import 'package:student_lite/utils/config-text.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:student_lite/widgets/AnimatedBottomNavigationBar.dart';
-import 'package:student_lite/widgets/Search.dart';
 import 'package:student_lite/widgets/appbar_sp.dart';
 import 'package:student_lite/widgets/fab.dart';
 
@@ -363,7 +362,7 @@ class _Page30State extends State<Page30> {
                           ],
                         ),
                       ),
-                      ReviewStatisticsScreen(),
+                      ReviewStatisticsScreen(motelId: 'Motel01'),
                       CommentValuation(),
                     ],
                   ),
