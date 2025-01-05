@@ -80,6 +80,7 @@ class _PersonalInformationState extends State<PersonalInformation> {
                 'Personal Information',
                 style: StyleConfigText.bodyTextBlack1.copyWith(
                   color: StyleConfigColor.orangeDark,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),

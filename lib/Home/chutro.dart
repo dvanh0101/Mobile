@@ -24,15 +24,18 @@ class _chutroState extends State<chutro> {
   final _locationController = TextEditingController();
   final _sizeController = TextEditingController();
   final _descriptionController = TextEditingController();
-  final _rentController =
-  TextEditingController();
-
+  final _rentController = TextEditingController();
+  final TextEditingController _birthDateController = TextEditingController();
   String _selectedRoomType = 'Phòng trọ';
   String _selectedPostType = 'Tất cả';
   final List<File> _images = [];
   bool _isLoading = false;
   final _formKey = GlobalKey<FormState>();
-
+  @override
+  void dispose() {
+    _birthDateController.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,19 +69,32 @@ class _chutroState extends State<chutro> {
                   Expanded(
                     child: Container(
                       child: TextFormField(
-                        controller: _sizeController,
-                        decoration: buildInputDecoration('Diện tích'),
-                        keyboardType: TextInputType.number,
+                        controller: _birthDateController,
+                        decoration: buildInputDecoration('Ngày sinh'),
+                        readOnly: true,
+                        onTap: () async {
+                          // Mở trình chọn ngày
+                          DateTime? pickedDate = await showDatePicker(
+                            context: context,
+                            initialDate: DateTime.now(),
+                            firstDate: DateTime(1900),
+                            lastDate: DateTime.now(),
+                          );
+                          if (pickedDate != null) {
+                            _birthDateController.text =
+                            '${pickedDate.day}/${pickedDate.month}/${pickedDate.year}'; // Format ngày
+                          }
+                        },
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'Vui lòng nhập diện tích';
+                            return 'Vui lòng chọn ngày sinh';
                           }
                           return null;
                         },
-
                       ),
                     ),
                   ),
+
                 ],
               ),
 

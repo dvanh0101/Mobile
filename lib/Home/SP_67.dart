@@ -18,9 +18,9 @@ class _sp_67State extends State<sp_67> {
   int _currentPage = 0;
 
   final List<String> _images = [
-    'assets/avt.jpg',
-    'assets/avt.jpg',
-    'assets/avt.jpg',
+    'assets/trangchu1.png',
+    'assets/trangchu1.png',
+    'assets/trangchu1.png',
   ];
   int _selectedIndex = 0;
   void _onItemTapped(int index) {
@@ -100,7 +100,7 @@ class _sp_67State extends State<sp_67> {
                   child: Image.asset(
                     height: 100,
                     width: 500,
-                    'assets/avt.jpg',
+                    'assets/trangchu.png',
                     fit: BoxFit.cover,
                   ),
                 ),

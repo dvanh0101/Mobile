@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:student_lite/widgets/AnimatedBottomNavigationBar.dart';
 import 'package:student_lite/widgets/AppBar.dart';
+import 'package:student_lite/widgets/fab.dart';
 
 class Discount extends StatefulWidget {
   const Discount({super.key});
@@ -51,6 +53,16 @@ class _DiscountState extends State<Discount> {
           ),
         ],
       ),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.fromLTRB(0,0,155,0),
+        child:
+        fab(),
+      ),
+      bottomSheet: Stack(
+        children: [
+          MyHomePage(searchQuery: 'widget.searchQuery',),
+        ],
+      ),
     );
   }
 
@@ -59,15 +71,15 @@ class _DiscountState extends State<Discount> {
       height: _itemHeight,
       child: ListTile(
         leading: Image.asset(
-          'assets/avt.jpg',
+          'assets/image2.png',
           width: _itemHeight,
           height: _itemHeight,
           fit: BoxFit.cover,
         ),
-        title: Text('test'),
-        subtitle: Text('test'),
+        title: Text('Phòng trọ Minh An'),
+        subtitle: Text('Quận 5, TP.HCM'),
         trailing: Icon(
-          Icons.heart_broken_outlined,
+          Icons.favorite,
           size: 20,
         ),
       ),
